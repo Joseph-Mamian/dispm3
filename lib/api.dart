@@ -20,7 +20,7 @@ class Api {
     }
 
     return 'city boy city boy';
-    } on DioException catch(e){
+    } on DioException {
       return 'Error';
     }
     

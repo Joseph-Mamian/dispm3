@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:dispm4/presentation/service/auth_service.dart';
+import 'package:dispm3/presentation/service/auth_service.dart';
+import 'package:go_router/go_router.dart';
 
 class Auth extends StatefulWidget {
   const Auth({super.key});
@@ -41,7 +42,9 @@ class _AuthState extends State<Auth> {
       ).showSnackBar(SnackBar(content: Text('Logeado correctamente')));
       setState(() {
         _loading = false;
+        context.go("/user");
       });
+      
     } else {
       // Fallo
       ScaffoldMessenger.of(
@@ -104,19 +107,6 @@ class _AuthState extends State<Auth> {
                           icon: _loading
                               ? CircularProgressIndicator()
                               : Icon(Icons.login),
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      SizedBox(
-                        width: double.infinity,
-                        child: FilledButton.icon(
-                          label: Text('ir a prueba asi chad'),
-                          onPressed: () {
-                            Navigator.pushReplacementNamed(context, "/model/prueba_model" );
-                          },
-                          icon: _loading
-                              ? CircularProgressIndicator()
-                              : Icon(Icons.rocket),
                         ),
                       ),
                     ],
